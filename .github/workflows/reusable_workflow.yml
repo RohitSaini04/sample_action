@@ -3,7 +3,12 @@ on:
     inputs:
       username:
         description: 'A username passed from the caller workflow'
-        default: 'john-doe'
+        default: 'john'
+        required: false
+        type: string
+      lastname:
+        description: 'A lastname passed from the caller workflow'
+        default: 'doe'
         required: false
         type: string
 
@@ -13,4 +18,15 @@ jobs:
 
     steps:
       - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }}
+        run: |
+          echo The username is ${{ inputs.username }}
+          sleep 10s
+  
+  print-lastname:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the input name to STDOUT
+        run: |
+          echo The username is ${{ inputs.lastname }}
+          sleep 15s
